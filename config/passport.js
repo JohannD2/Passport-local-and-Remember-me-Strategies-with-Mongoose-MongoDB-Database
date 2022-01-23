@@ -34,7 +34,7 @@ passport.use(new RememberMeStrategy(
     async function (token, done) {
         try {
             Token.findOneAndRemove({ token })
-                .populate('User')
+                .populate('user')
                 .exec(function (err, doc) {
                     if (err) return done(err);
                     if (!doc) return done(null, false);
